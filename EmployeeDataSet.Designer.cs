@@ -939,23 +939,31 @@ SELECT ID, Name, Position, Hourly_Pay_Rate FROM Employee WHERE (ID = @ID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::Microsoft.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::Microsoft.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::Microsoft.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID, Name, Position, Hourly_Pay_Rate FROM dbo.Employee";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::Microsoft.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT ID, Name, Position, Hourly_Pay_Rate \r\nFROM dbo.Employee\r\nWHERE Name Like \'" +
-                "%\' + @value + \'%\'";
+            this._commandCollection[1].CommandText = "SELECT Max(Hourly_Pay_Rate) \r\nFROM Employee";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2] = new global::Microsoft.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT Min(Hourly_Pay_Rate) \r\nFROM Employee";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3] = new global::Microsoft.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "SELECT ID, Name, Position, Hourly_Pay_Rate \r\nFROM dbo.Employee\r\nWHERE Name Like \'" +
+                "%\' + @value + \'%\'";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             global::Microsoft.Data.SqlClient.SqlParameter param = new global::Microsoft.Data.SqlClient.SqlParameter();
             param.ParameterName = "@value";
             param.SqlDbType = global::System.Data.SqlDbType.NVarChar;
             param.Size = 50;
             param.IsNullable = true;
             param.SourceColumn = "Name";
-            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[3].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -987,7 +995,7 @@ SELECT ID, Name, Position, Hourly_Pay_Rate FROM Employee WHERE (ID = @ID)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int SearchName(EmployeeDataSet.EmployeeDataTable dataTable, string value) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((value == null)) {
                 throw new global::System.ArgumentNullException("value");
             }
@@ -1154,6 +1162,62 @@ SELECT ID, Name, Position, Hourly_Pay_Rate FROM Employee WHERE (ID = @ID)";
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string Name, string Position, decimal Hourly_Pay_Rate, int Original_ID, string Original_Name, string Original_Position, decimal Original_Hourly_Pay_Rate) {
             return this.Update(Name, Position, Hourly_Pay_Rate, Original_ID, Original_Name, Original_Position, Original_Hourly_Pay_Rate, Original_ID);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual global::System.Nullable<decimal> HighestHourlyPayRate() {
+            global::Microsoft.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return new global::System.Nullable<decimal>();
+            }
+            else {
+                return new global::System.Nullable<decimal>(((decimal)(returnValue)));
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual global::System.Nullable<decimal> LowestHourlyPayRate() {
+            global::Microsoft.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return new global::System.Nullable<decimal>();
+            }
+            else {
+                return new global::System.Nullable<decimal>(((decimal)(returnValue)));
+            }
         }
     }
     

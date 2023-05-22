@@ -31,37 +31,39 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.employeeBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.employeeDataSet = new Employee_Search.EmployeeDataSet();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.employeeBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.employeeDataGridView = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.searchTextBox = new System.Windows.Forms.TextBox();
-            this.searchButton = new System.Windows.Forms.Button();
-            this.showAllButton = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.employeeDataSet = new Employee_Search.EmployeeDataSet();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.searchTextBox = new System.Windows.Forms.TextBox();
+            this.showAllButton = new System.Windows.Forms.Button();
             this.employeeTableAdapter = new Employee_Search.EmployeeDataSetTableAdapters.EmployeeTableAdapter();
             this.tableAdapterManager = new Employee_Search.EmployeeDataSetTableAdapters.TableAdapterManager();
+            this.lowestButton = new System.Windows.Forms.Button();
+            this.highestButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingNavigator)).BeginInit();
             this.employeeBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeDataGridView)).BeginInit();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeDataGridView)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // employeeBindingNavigator
@@ -93,6 +95,41 @@
             this.employeeBindingNavigator.Size = new System.Drawing.Size(497, 25);
             this.employeeBindingNavigator.TabIndex = 0;
             this.employeeBindingNavigator.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // employeeBindingSource
+            // 
+            this.employeeBindingSource.DataMember = "Employee";
+            this.employeeBindingSource.DataSource = this.employeeDataSet;
+            // 
+            // employeeDataSet
+            // 
+            this.employeeDataSet.DataSetName = "EmployeeDataSet";
+            this.employeeDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -127,16 +164,9 @@
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
@@ -159,26 +189,8 @@
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // employeeBindingNavigatorSaveItem
             // 
@@ -203,44 +215,6 @@
             this.employeeDataGridView.Name = "employeeDataGridView";
             this.employeeDataGridView.Size = new System.Drawing.Size(473, 311);
             this.employeeDataGridView.TabIndex = 1;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.searchButton);
-            this.groupBox1.Controls.Add(this.searchTextBox);
-            this.groupBox1.Location = new System.Drawing.Point(12, 345);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(283, 93);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Search Name";
-            // 
-            // searchTextBox
-            // 
-            this.searchTextBox.Location = new System.Drawing.Point(6, 28);
-            this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(271, 20);
-            this.searchTextBox.TabIndex = 0;
-            // 
-            // searchButton
-            // 
-            this.searchButton.Location = new System.Drawing.Point(6, 54);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(271, 23);
-            this.searchButton.TabIndex = 1;
-            this.searchButton.Text = "Search";
-            this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
-            // 
-            // showAllButton
-            // 
-            this.showAllButton.Location = new System.Drawing.Point(301, 373);
-            this.showAllButton.Name = "showAllButton";
-            this.showAllButton.Size = new System.Drawing.Size(184, 49);
-            this.showAllButton.TabIndex = 3;
-            this.showAllButton.Text = "Show All Items";
-            this.showAllButton.UseVisualStyleBackColor = true;
-            this.showAllButton.Click += new System.EventHandler(this.showAllButton_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -267,15 +241,43 @@
             this.dataGridViewTextBoxColumn4.HeaderText = "Hourly_Pay_Rate";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
-            // employeeBindingSource
+            // groupBox1
             // 
-            this.employeeBindingSource.DataMember = "Employee";
-            this.employeeBindingSource.DataSource = this.employeeDataSet;
+            this.groupBox1.Controls.Add(this.searchButton);
+            this.groupBox1.Controls.Add(this.searchTextBox);
+            this.groupBox1.Location = new System.Drawing.Point(12, 345);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(283, 93);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Search Name";
             // 
-            // employeeDataSet
+            // searchButton
             // 
-            this.employeeDataSet.DataSetName = "EmployeeDataSet";
-            this.employeeDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.searchButton.Location = new System.Drawing.Point(6, 54);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(271, 23);
+            this.searchButton.TabIndex = 1;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
+            // searchTextBox
+            // 
+            this.searchTextBox.Location = new System.Drawing.Point(6, 28);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(271, 20);
+            this.searchTextBox.TabIndex = 0;
+            // 
+            // showAllButton
+            // 
+            this.showAllButton.Location = new System.Drawing.Point(301, 373);
+            this.showAllButton.Name = "showAllButton";
+            this.showAllButton.Size = new System.Drawing.Size(184, 49);
+            this.showAllButton.TabIndex = 3;
+            this.showAllButton.Text = "Show All Items";
+            this.showAllButton.UseVisualStyleBackColor = true;
+            this.showAllButton.Click += new System.EventHandler(this.showAllButton_Click);
             // 
             // employeeTableAdapter
             // 
@@ -287,11 +289,33 @@
             this.tableAdapterManager.EmployeeTableAdapter = this.employeeTableAdapter;
             this.tableAdapterManager.UpdateOrder = Employee_Search.EmployeeDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // lowestButton
+            // 
+            this.lowestButton.Location = new System.Drawing.Point(12, 444);
+            this.lowestButton.Name = "lowestButton";
+            this.lowestButton.Size = new System.Drawing.Size(236, 23);
+            this.lowestButton.TabIndex = 4;
+            this.lowestButton.Text = "Lowest Pay Rate";
+            this.lowestButton.UseVisualStyleBackColor = true;
+            this.lowestButton.Click += new System.EventHandler(this.lowestButton_Click);
+            // 
+            // highestButton
+            // 
+            this.highestButton.Location = new System.Drawing.Point(249, 444);
+            this.highestButton.Name = "highestButton";
+            this.highestButton.Size = new System.Drawing.Size(236, 23);
+            this.highestButton.TabIndex = 4;
+            this.highestButton.Text = "Highest Pay Rate";
+            this.highestButton.UseVisualStyleBackColor = true;
+            this.highestButton.Click += new System.EventHandler(this.highestButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 450);
+            this.ClientSize = new System.Drawing.Size(497, 556);
+            this.Controls.Add(this.highestButton);
+            this.Controls.Add(this.lowestButton);
             this.Controls.Add(this.showAllButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.employeeDataGridView);
@@ -302,11 +326,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingNavigator)).EndInit();
             this.employeeBindingNavigator.ResumeLayout(false);
             this.employeeBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeDataGridView)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,6 +364,8 @@
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.TextBox searchTextBox;
         private System.Windows.Forms.Button showAllButton;
+        private System.Windows.Forms.Button lowestButton;
+        private System.Windows.Forms.Button highestButton;
     }
 }
 

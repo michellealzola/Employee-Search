@@ -63,6 +63,24 @@ SELECT ID, Name, Position, Hourly_Pay_Rate FROM Employee WHERE (ID = @ID)</Comma
               <Mapping SourceColumn="Hourly_Pay_Rate" DataSetColumn="Hourly_Pay_Rate" />
             </Mappings>
             <Sources>
+              <DbSource ConnectionRef="PersonnelConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="HighestHourlyPayRate" Modifier="Public" Name="HighestHourlyPayRate" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="HighestHourlyPayRate">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Max(Hourly_Pay_Rate) 
+FROM Employee</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="PersonnelConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="LowestHourlyPayRate" Modifier="Public" Name="LowestHourlyPayRate" QueryType="Scalar" ScalarCallRetval="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="LowestHourlyPayRate">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Min(Hourly_Pay_Rate) 
+FROM Employee</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="PersonnelConnectionString (Settings)" DbObjectName="dbo.Employee" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="SearchName" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="SearchName" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="SearchName">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
@@ -85,25 +103,25 @@ WHERE Name Like '%' + @value + '%'</CommandText>
   <xs:element name="EmployeeDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="EmployeeDataSet" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="EmployeeDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Employee" msprop:Generator_RowClassName="EmployeeRow" msprop:Generator_RowEvHandlerName="EmployeeRowChangeEventHandler" msprop:Generator_RowDeletedName="EmployeeRowDeleted" msprop:Generator_RowDeletingName="EmployeeRowDeleting" msprop:Generator_RowEvArgName="EmployeeRowChangeEvent" msprop:Generator_TablePropName="Employee" msprop:Generator_RowChangedName="EmployeeRowChanged" msprop:Generator_UserTableName="Employee" msprop:Generator_RowChangingName="EmployeeRowChanging" msprop:Generator_TableClassName="EmployeeDataTable" msprop:Generator_TableVarName="tableEmployee">
+        <xs:element name="Employee" msprop:Generator_RowEvHandlerName="EmployeeRowChangeEventHandler" msprop:Generator_RowDeletedName="EmployeeRowDeleted" msprop:Generator_RowDeletingName="EmployeeRowDeleting" msprop:Generator_RowEvArgName="EmployeeRowChangeEvent" msprop:Generator_TablePropName="Employee" msprop:Generator_RowChangedName="EmployeeRowChanged" msprop:Generator_UserTableName="Employee" msprop:Generator_RowChangingName="EmployeeRowChanging" msprop:Generator_RowClassName="EmployeeRow" msprop:Generator_TableClassName="EmployeeDataTable" msprop:Generator_TableVarName="tableEmployee">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:int" />
-              <xs:element name="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnVarNameInTable="columnName">
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnVarNameInTable="columnID" type="xs:int" />
+              <xs:element name="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnVarNameInTable="columnName">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Position" msprop:Generator_UserColumnName="Position" msprop:Generator_ColumnPropNameInTable="PositionColumn" msprop:Generator_ColumnPropNameInRow="Position" msprop:Generator_ColumnVarNameInTable="columnPosition">
+              <xs:element name="Position" msprop:Generator_ColumnPropNameInTable="PositionColumn" msprop:Generator_ColumnPropNameInRow="Position" msprop:Generator_UserColumnName="Position" msprop:Generator_ColumnVarNameInTable="columnPosition">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Hourly_Pay_Rate" msprop:Generator_UserColumnName="Hourly_Pay_Rate" msprop:Generator_ColumnPropNameInTable="Hourly_Pay_RateColumn" msprop:Generator_ColumnPropNameInRow="Hourly_Pay_Rate" msprop:Generator_ColumnVarNameInTable="columnHourly_Pay_Rate" type="xs:decimal" />
+              <xs:element name="Hourly_Pay_Rate" msprop:Generator_ColumnPropNameInTable="Hourly_Pay_RateColumn" msprop:Generator_ColumnPropNameInRow="Hourly_Pay_Rate" msprop:Generator_UserColumnName="Hourly_Pay_Rate" msprop:Generator_ColumnVarNameInTable="columnHourly_Pay_Rate" type="xs:decimal" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

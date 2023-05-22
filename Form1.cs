@@ -41,5 +41,23 @@ namespace Employee_Search
         {
             this.employeeTableAdapter.Fill(this.employeeDataSet.Employee);
         }
+
+        private void lowestButton_Click(object sender, EventArgs e)
+        {
+            decimal lowest;
+
+            lowest = (decimal)this.employeeTableAdapter.LowestHourlyPayRate();
+
+            MessageBox.Show(lowest.ToString("c"));
+        }
+
+        private void highestButton_Click(object sender, EventArgs e)
+        {
+            decimal highest;
+
+            highest = (decimal)this.employeeTableAdapter.HighestHourlyPayRate();
+
+            MessageBox.Show(highest.ToString("c"));
+        }
     }
 }
